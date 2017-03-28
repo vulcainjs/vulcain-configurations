@@ -1,7 +1,7 @@
 import { Application, IContainer, System } from "vulcain-corejs";
 
 // The domain is mandatory
-const domain = "<%=project.namespace %>";
+const domain = "vulcain";
 
 // Default configurations
 let port = 8080;                      // server port
@@ -26,15 +26,8 @@ export class Startup extends Application {
      * @param {any} adapter
      */
     initializeServerAdapter(adapter) {
-        // adapter.setStaticRoot("./www");
-    }
-
-    /**
-     * Provide a way to add http server features (like socket io)
-     *
-     * @param {any} server
-     */
-    onServerStarted(server, adapter) {
+        // Enable api key authentifcation
+        this.enableApiKeyAuthentication(process.env['AUTH_SERVICE'], process.env['AUTH_VERSION'] || '1.0');
     }
 
     /**
@@ -48,18 +41,6 @@ export class Startup extends Application {
            // container.useRabbitBusAdapter();
             container.useMongoProvider();
         }
-    }
-
-    /**
-     * Register custom services
-     *
-     * @param {IContainer} container
-     *
-     * @memberOf Startup
-     */
-    initializeServices(container: IContainer) {
-        // Register custom services from a specific folder
-        // this.injectFrom("...");
     }
 
     /**

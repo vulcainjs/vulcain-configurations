@@ -1,3 +1,5 @@
-# Default micro-service template to use with vulcain framework
+# Vulcain dynamic properties server
 
-See documentation on [vulcainjs](http://www.vulcainjs.org)
+Microservice to use with [vulcainjs](http://www.vulcainjs.org)
+
+See documentation on [vulcainjs](http://www.vulcainjs.org/reference/configurations/)

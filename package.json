@@ -1,5 +1,5 @@
 {
-  "name": "<%= project.fullName %>",
+  "name": "configurations-service",
   "version": "1.0.0",
   "description": "Vulcain micro-service",
   "main": "src/index.ts",
@@ -13,6 +13,7 @@
     "@types/node": "^6.0.51",
     "@types/sinon": "^1.16.32",
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "fs-extra": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-istanbul": "^1.1.1",

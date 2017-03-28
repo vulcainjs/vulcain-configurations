@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="dist/index.js" node-parameters="" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="Run server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="dist/index.js" working-dir="$PROJECT_DIR$">
     <envs>
-      <env name="VULCAIN_ENV" value="<%=env%>" />
+      <env name="VULCAIN_ENV" value="test" />
       <env name="VULCAIN_SERVICE_VERSION" value="1.0" />
-      <env name="VULCAIN_SERVICE_NAME" value="<%= project.fullName %>" />
-      <env name="VULCAIN_ENV_MODE" value="local" /> 
+      <env name="VULCAIN_SERVICE_NAME" value="configurations-service" />
+      <env name="VULCAIN_ENV_MODE" value="local" />
     </envs>
     <method>
       <option name="GulpBeforeRunTask" enabled="true">
