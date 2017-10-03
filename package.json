@@ -27,17 +27,12 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
-    "body-parser": "^1.14.0",
-    "cors": "^2.8.1",
-    "crypto": "0.0.3",
-    "express": "^4.13.0",
-    "jsonwebtoken": "^7.1.9",
     "moment": "^2.15.2",
     "mongodb": "^2.2.12",
     "reflect-metadata": "^0.1.0",
     "rxjs": "^5.1.0",
     "unirest": "^0.5.0",
     "uuid": "^3.0.1",
-    "vulcain-corejs": "^1.1.107"
+    "vulcain-corejs": "^2.0.0"
   }
 }
