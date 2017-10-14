@@ -1,4 +1,4 @@
-import { IScopedComponent, Query, RequestContext, Property, Model, IContainer, Inject, DefaultServiceNames, ApplicationRequestError, System, QueryHandler } from 'vulcain-corejs';
+import { IScopedComponent, Query, Property, Model, IContainer, Inject, DefaultServiceNames, System, QueryHandler, IRequestContext, ApplicationError } from 'vulcain-corejs';
 import { Configuration } from './model';
 import { ConfigurationQueryHandler } from "./queryHandler";
 
@@ -27,13 +27,13 @@ export class ConfigForServiceHandler implements IScopedComponent {
     @Inject()
     configurations: ConfigurationQueryHandler;
 
-    requestContext: RequestContext;
+    context: IRequestContext;
 
     @Query({ description: "Get all configs for one service", action: "forService" })
     async getConfigForServiceAsync(p: ForServiceArguments): Promise<Array<Configuration>> {
 
-        if (!System.isTestEnvironnment && !this.requestContext.userHasScope("configurations:read")) {
-            throw new ApplicationRequestError("Not authorized", null, 403);
+        if (!System.isTestEnvironnment && !this.context.user.hasScope("configurations:read")) {
+            throw new ApplicationError("Not authorized", 403);
         }
         const serviceFullName = [p.domain, p.service, p.version].join('.');
 
@@ -70,7 +70,7 @@ export class ConfigForServiceHandler implements IScopedComponent {
         // after a period of 24H.
         if (toBeDeleted.length > 0) {
             for (let cfg of toBeDeleted) {
-                const command = await this.requestContext.getCommandAsync("DefaultRepositoryCommand", "Configuration");
+                const command = this.context.getDefaultCRUDCommand("Configuration");
                 await command.runAsync<Array<Configuration>>("delete", cfg);
             }
         }
