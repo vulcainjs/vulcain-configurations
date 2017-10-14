@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "rxjs": "^5.1.0",
-    "vulcain-corejs": "^2.0.0-beta9"
+    "vulcain-corejs": ">2.0.0-"
   }
 }

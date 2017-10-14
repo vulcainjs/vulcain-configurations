@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { TestContext, DefaultActionHandler, DefaultQueryHandler, QueryHandler, ActionHandler, Model, Property, RequestContext, IContainer } from 'vulcain-corejs';
+import { TestContext, DefaultActionHandler, DefaultQueryHandler, QueryHandler, ActionHandler, Model, Property, IContainer } from 'vulcain-corejs';
 import { ConfigurationQueryHandler } from '../dist/api/queryHandler';
 import { Configuration } from '../dist/api/model';
 import { ConfigurationActionHandler } from "../dist/api/actionHandler";

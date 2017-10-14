@@ -29,7 +29,7 @@ export class ConfigForServiceHandler implements IScopedComponent {
 
     context: IRequestContext;
 
-    @Query({ description: "Get all configs for one service", action: "forService" })
+    @Query({ description: "Get all configs for one service", action: "configforService" })
     async getConfigForServiceAsync(p: ForServiceArguments): Promise<Array<Configuration>> {
 
         if (!System.isTestEnvironnment && !this.context.user.hasScope("configurations:read")) {
@@ -59,7 +59,7 @@ export class ConfigForServiceHandler implements IScopedComponent {
             }
 
             result.push({
-                key: cfg.key.substr("shared.".length),
+                key: cfg.key,
                 deleted: cfg.deleted,
                 encrypted: cfg.encrypted,
                 value: cfg.value
