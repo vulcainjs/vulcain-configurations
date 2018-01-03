@@ -1,4 +1,4 @@
-import { ActionHandler, Action, DefaultActionHandler, Inject, System } from 'vulcain-corejs';
+import { ActionHandler, Action, DefaultActionHandler, Inject, Service } from 'vulcain-corejs';
 import { Configuration } from './model';
 
 // -----------------------------------------------------------
@@ -8,25 +8,25 @@ import { Configuration } from './model';
 export class ConfigurationActionHandler extends DefaultActionHandler {
     // Override default actions
 
-    async createAsync(config: Configuration) {
-        config.lastUpdate = System.nowAsString();
+    async create(config: Configuration) {
+        config.lastUpdate = Service.nowAsString();
         if (config.encrypted) {
-            config.value = System.encrypt(JSON.stringify(config.value));
+            config.value = Service.encrypt(JSON.stringify(config.value));
         }
-        return super.createAsync(config);
+        return super.create(config);
     }
 
-    async updateAsync(config: Configuration) {
-        config.lastUpdate = System.nowAsString();
+    async update(config: Configuration) {
+        config.lastUpdate = Service.nowAsString();
         if (config.encrypted) {
-            config.value = System.encrypt(JSON.stringify(config.value));
+            config.value = Service.encrypt(JSON.stringify(config.value));
         }
-        return super.updateAsync(config);
+        return super.update(config);
     }
 
-    deleteAsync(entity: Configuration) {
+    delete(entity: Configuration) {
         entity.deleted = true; // defer deletion
-        return super.updateAsync(entity);
+        return super.update(entity);
     }
 }
 
